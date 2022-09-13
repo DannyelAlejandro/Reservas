@@ -52,3 +52,13 @@ class Field:
         cur = mysql.get_db().cursor()
         cur.execute('DELETE FROM fields WHERE id = {0}'.format(id))
         mysql.get_db().commit()
+    
+    @classmethod
+    def count(cls):
+        cur = mysql.get_db().cursor()
+        cur.execute('SELECT count(*) FROM fields')
+        data = cur.fetchall()
+        cur.close()
+        mysql.get_db().commit()
+
+        return data[0][0]

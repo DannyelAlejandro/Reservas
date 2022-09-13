@@ -33,6 +33,16 @@ class User:
         mysql.get_db().commit()
 
         return data
+    
+    @classmethod
+    def count(cls):
+        cur = mysql.get_db().cursor()
+        cur.execute('SELECT count(*) FROM users')
+        data = cur.fetchall()
+        cur.close()
+        mysql.get_db().commit()
+
+        return data[0][0]
 
     @classmethod
     def find(cls, id):

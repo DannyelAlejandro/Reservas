@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link d-flex align-items-center justify-content-center">
-        <!--<img src="{{ url_for('static', filename='assets/img/core-img/espe-logo.png') }}" class="brand-image brand-text" alt="ESPE Logo">-->
-        <img src="{{ url_for('static', filename='assets/img/core-img/udla.png') }}" class="brand-image brand-text" alt="ESPE Logo">
+        <!--<img src="{{ url_for('static', filename='assets/img/core-img/udla.png') }}" class="brand-image brand-text" alt="ESPE Logo">-->
+        <span class="brand-text font-weight-light">La Cancha Amiga</span>
     </a>
 
     <!-- Sidebar -->
@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 {% if session['user'][1] == 'admin' %}
-                    <!--<li class="nav-item">
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-cogs"></i>
                             <p>
@@ -29,18 +29,6 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/permissions" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Permisos</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/roles" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Roles</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="/users" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Usuarios</p>
@@ -49,35 +37,17 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="/periods" class="nav-link">
+                        <a href="/fields" class="nav-link">
                             <i class="nav-icon fas fa-swatchbook"></i>
-                            <p>Periodos</p>
+                            <p>Canchas</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/calendars" class="nav-link">
+                        <a href="/reservations" class="nav-link">
                             <i class="nav-icon fas fa-calendar"></i>
-                            <p>Horarios</p>
+                            <p>Reservas</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="/classrooms" class="nav-link">
-                            <i class="nav-icon fas fa-school"></i>
-                            <p>Aulas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/matters" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>Materias</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/students" class="nav-link">
-                            <i class="nav-icon fas fa-user-graduate"></i>
-                            <p>Estudiantes</p>
-                        </a>
-                    </li>-->
                 {% endif %}
             </ul>
         </nav>

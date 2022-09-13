@@ -32,3 +32,15 @@ CREATE TABLE reservations
     CONSTRAINT fk_user_reservations FOREIGN KEY(user_id) REFERENCES users(id),
     CONSTRAINT fk_field_reservations FOREIGN KEY(field_id) REFERENCES fields(id)
 )ENGINE=InnoDB;
+
+CREATE TABLE anotations
+(
+    id int(255) AUTO_INCREMENT NOT NULL,
+    reservation_id int(255) NOT NULL,
+    team char(1) NOT NULL,
+    full_name varchar(255) NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT fk_reservation_anotations FOREIGN KEY(reservation_id) REFERENCES reservations(id)
+)ENGINE=InnoDB;
+
+INSERT INTO users (role, first_name, lastname, email, password) VALUES ('admin','Admin','Reservas','reservas@admin','$2b$12$Dpg5dxjNryyc6MUBRLbHY.AqIY6.SS3yuqezZ8ppb/V1eLiXzSYAG')

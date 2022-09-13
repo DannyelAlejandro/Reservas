@@ -22,6 +22,16 @@ class Reservation:
         mysql.get_db().commit()
 
         return data
+    
+    @classmethod
+    def getAll(cls):
+        cur = mysql.get_db().cursor()
+        cur.execute('SELECT reservations.id, fields.name, reservations.start_at, reservations.end_at, fields.capacity FROM reservations JOIN fields ON fields.id = reservations.field_id')
+        data = cur.fetchall()
+        cur.close()
+        mysql.get_db().commit()
+
+        return data
 
     @classmethod
     def find(cls, id):
@@ -64,3 +74,23 @@ class Reservation:
         mysql.get_db().commit()
 
         return data
+    
+    @classmethod
+    def withField(cls, reservation_id):
+        cur = mysql.get_db().cursor()
+        cur.execute('SELECT reservations.id, fields.name, fields.capacity FROM reservations JOIN fields ON fields.id = reservations.field_id WHERE reservations.id = %s', (reservation_id))
+        data = cur.fetchall()
+        cur.close()
+        mysql.get_db().commit()
+
+        return data[0]
+
+    @classmethod
+    def count(cls):
+        cur = mysql.get_db().cursor()
+        cur.execute('SELECT count(*) FROM reservations')
+        data = cur.fetchall()
+        cur.close()
+        mysql.get_db().commit()
+
+        return data[0][0]

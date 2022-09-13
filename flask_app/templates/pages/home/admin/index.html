@@ -20,7 +20,7 @@
 {% block main_content %}
 <div class="content">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-lg-3 col-6">
 
                 <div class="small-box bg-info">
@@ -38,8 +38,8 @@
 
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>{{ nStudets }}</h3>
-                        <p>Estudiantes Matriculados</p>
+                        <h3>{{ nFields }}</h3>
+                        <p>Canchas</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -51,8 +51,8 @@
 
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>{{ nClassrooms }}</h3>
-                        <p>Aulas</p>
+                        <h3>{{ nReservations }}</h3>
+                        <p>Reservas</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
@@ -60,33 +60,35 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>{{ nCalendars }}</h3>
-                        <p>Horarios</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                </div>
-            </div>
-
         </div>
         <hr>
         <div class="row">
-            {% for classroom in classrooms %}
-            <div class="col-lg-4">
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h5 class="m-0">{{ classroom.classroom }} {{ classroom.parallel }}</h5>
-                    </div>
-                    <div class="card-body">
-                        <a href="/course/{{ classroom._id }}" class="btn btn-primary">Ver mas</a>
+            {% for reservation in reservations %}
+                <div class="col-lg-4">
+                    <div class="card card-warning card-outline">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-center">
+                                <h5 class="m-0">{{ reservation[1] }} ({{ reservation[4] }} x {{ reservation[4] }})</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                <b>Inicio: </b>
+                                {{ reservation[2] }}
+                            </p>
+                            <p>
+                                <b>Fin: </b>
+                                {{ reservation[3] }}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between">
+                                <a href="/anotations/{{ reservation[0] }}" class="btn btn-info btn-sm">Ver mas</a>
+                                <button href="#" class="btn btn-danger btn-sm" onclick="deleteReservation('{{ reservation[0] }}')" data-toggle="modal" data-target="#delete-modal">Eliminar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>

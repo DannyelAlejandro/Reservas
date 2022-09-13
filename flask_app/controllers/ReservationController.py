@@ -49,7 +49,7 @@ def storereservations():
                 'end_at': request.form["end_at"]
             }
             Reservation.create(data)
-    return redirect(url_for('indexreservations'))
+    return redirect(request.referrer)
 
 # Update reservation
 @app.route('/reservations/update/<id>', methods = ['POST'])
@@ -68,10 +68,10 @@ def updatereservations(id):
         }
         Reservation.update(id, data)
 
-    return redirect(url_for('indexreservations'))
+    return redirect(request.referrer)
 
 # Delete reservation
 @app.route('/reservations/delete/<id>', methods = ['POST'])
 def deletereservations(id):
     Reservation.delete(id)
-    return redirect(url_for('indexreservations'))
+    return redirect(request.referrer)
